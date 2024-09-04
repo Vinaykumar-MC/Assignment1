@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ECEFF8">
+        <include
+            android:id="@+id/topBar"
+            layout="@layout/top_bar"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topBar"
+            android:layout_marginStart="10dp"
+            android:text="Jobs List"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/list_job_card"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="#FFFFFF"
+            app:cardCornerRadius="16dp"
+          app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtList"
+            app:layout_constraintBottom_toTopOf="@id/tab_layout_job_type">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="MissingConstraints">
+                <com.l4digital.fastscroll.FastScrollRecyclerView
+                    android:id="@+id/jobsRv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:listitem="@layout/job_card_item"
+                    tools:itemCount="5"
+                    />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/bookmarked_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:listitem="@layout/job_card_item"
+                    tools:itemCount="5"
+                    android:visibility="gone"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout_job_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/white"
+            style="Widget.MaterialComponents.TabLayout.Colored"
+            android:elevation="8dp"
+            app:tabIndicatorColor="@color/addSellerBtn"
+            app:tabIndicatorAnimationMode="elastic"
+            app:tabIndicatorGravity="stretch"
+            app:tabIndicatorFullWidth="true"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="@color/black">
+
+        <com.google.android.material.tabs.TabItem
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jobs"
+            android:textAllCaps="false"
+            android:textColor="@color/indigo_dye"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:background="@drawable/tab_background_color"/>
+
+        <com.google.android.material.tabs.TabItem
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bookmarks"
+            android:textAllCaps="false"
+            android:textColor="@color/indigo_dye"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:background="@drawable/tab_background_color"/>
+    </com.google.android.material.tabs.TabLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
